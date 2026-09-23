@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
-
 
 // TODO-1-0 Créer un contrôleur "HomeController" --> php artisan...
 // TODO-1-1 Créer la méthode index pour renvoyer "hello world!"

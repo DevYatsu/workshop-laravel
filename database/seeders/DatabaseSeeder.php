@@ -26,5 +26,6 @@ class DatabaseSeeder extends Seeder
 
         User::factory(10)->create();
         // TODO-3-6 Ajouter le seeder "BookSeeder" ici en utilisant "$this->call(...)"
+        $this->call(BookSeeder::class);
     }
 }

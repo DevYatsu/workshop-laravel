@@ -1,3 +1,4 @@
+{{-- @var \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $users --}}
 <!-- TODO-1-3 Créer une vue blade "home.blade.php" dans "resources/views" avec "Hello World - view!" affiché -->
 <!-- TODO-1-4 Renvoyer la vue dans le contrôleur et tester d'accéder à "/" -->
 
@@ -81,20 +82,54 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Workshop Laravel — HE-Arc</title>
+    <title>Workshop Laravel &mdash; HE-Arc</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    />
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        rel="stylesheet"
+    />
 </head>
-<body style="font-family: roboto, sans-serif; margin: 2rem;">
-    <h1>Workshop Laravel — HE-Arc</h1>
-    @if (count($users) > 0)
-        <h1 style="color: rgb(7, 218, 7)">You are READY for the workshop ;)</h1>
-        <p>{{ count($users) }}: users, test si db seed.</p>
-    @else
-        <h1 style="color: red">You are NOT ready for the workshop :( pas de user dans la db</h1>
-        <p>Avez-vous exécuté <code>php artisan migrate --seed</code> ?</p>
-    @endif
+<body class="bg-body-tertiary">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-8">
+                <div class="mb-4 text-center">
+                    <h1 class="h2 mb-2">
+                        <i class="bi bi-book-half me-1" aria-hidden="true"></i>
+                        Workshop Laravel &mdash; HE-Arc
+                    </h1>
+                    <p class="text-body-secondary mb-0">
+                        Vérification de l'état de préparation de l'application.
+                    </p>
+                </div>
 
-    <p style="color: #666; margin-top: 2rem;">
-        Version de Laravel {{ Illuminate\Foundation\Application::VERSION }} et PHP {{ PHP_VERSION }}
-    </p>
+                @if (count($users ?? []) > 0)
+                    <div class="alert alert-success d-flex align-items-start" role="alert">
+                        <i class="bi bi-check-circle-fill me-2 mt-1" aria-hidden="true"></i>
+                        <div>
+                            <h2 class="h5 alert-heading">You are READY for the workshop ;)</h2>
+                            <p class="mb-0">{{ count($users ?? []) }}: users, test si db seed.</p>
+                        </div>
+                    </div>
+                @else
+                    <div class="alert alert-danger" role="alert">
+                        <h2 class="h5 alert-heading">
+                            You are NOT ready for the workshop :( pas de user dans la db
+                        </h2>
+                        <p class="mb-2">Avez-vous exécuté la commande suivante ?</p>
+                        <pre class="mb-0 bg-body-tertiary border rounded p-2"><code>php artisan migrate --seed</code></pre>
+                    </div>
+                @endif
+
+                <p class="text-body-secondary small text-center mb-0 mt-4">
+                    Version de Laravel {{ Illuminate\Foundation\Application::VERSION }}
+                    et PHP {{ PHP_VERSION }}
+                </p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

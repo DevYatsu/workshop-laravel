@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // TODO-6-5 Adapter les liens de pagination pour fonctionner avec Bootstrap
+        // TODO-6-5 DONE: pagination links use Bootstrap 5 markup.
+        Paginator::useBootstrapFive();
     }
 }
